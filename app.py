@@ -8,6 +8,7 @@ Hugging Face Spaces (CPU tier) üzerinde çalışacak şekilde optimize edilmiş
 """
 
 import gradio as gr
+import torch
 import cv2
 import numpy as np
 import pandas as pd
@@ -21,10 +22,10 @@ from huggingface_hub import hf_hub_download
 # ─────────────────────────────────────────────
 # YAPILANDIRMA — buraya kendi bilgilerini gir
 # ─────────────────────────────────────────────
-HF_REPO_ID    = "KULLANICI_ADIN/MODEL_REPO_ADIN"   # ← değiştir
+HF_REPO_ID    = "enesboz9/yolov8m-arac-tespiti"
 MODEL_FILE    = "best.pt"
-MAP50_SKORU   = "XX.X"                              # ← değiştir (örn. "87.4")
-GITHUB_LINK   = "https://github.com/KULLANICI/REPO" # ← değiştir
+MAP50_SKORU   = "90.6"
+GITHUB_LINK   = "https://github.com/KULLANICI/REPO"
 MAX_VIDEO_SN  = 30   # Maksimum video süresi (saniye)
 FRAME_ATLAMA  = 2    # Video işlemede her kaçıncı frame işlensin (1 = hepsi)
 
@@ -54,6 +55,8 @@ def modeli_yukle():
         from ultralytics import YOLO
         print(f"[BİLGİ] Model indiriliyor: {HF_REPO_ID}/{MODEL_FILE}")
         model_yolu = hf_hub_download(repo_id=HF_REPO_ID, filename=MODEL_FILE)
+        from ultralytics.nn.tasks import DetectionModel
+        torch.serialization.add_safe_globals([DetectionModel])
         model = YOLO(model_yolu)
         print("[BİLGİ] Model başarıyla yüklendi ✓")
     except Exception as hata:
