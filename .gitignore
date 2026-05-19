@@ -1,0 +1,40 @@
+# ── Python ─────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Sanal Ortam ────────────────────────────
+.venv/
+venv/
+env/
+.env
+
+# ── Model Ağırlıkları (Hub'dan indirilir) ──
+*.pt
+*.pth
+*.onnx
+*.torchscript
+runs/
+
+# ── Geçici Dosyalar ─────────────────────────
+*.tmp
+*.log
+tmp/
+temp/
+
+# ── IDE / Editör ────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Ultralytics Cache ───────────────────────
+datasets/

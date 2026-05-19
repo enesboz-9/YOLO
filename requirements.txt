@@ -1,0 +1,19 @@
+# YOLOv8 Gerçek Zamanlı Nesne Tespiti — Bağımlılıklar
+# Hugging Face Spaces CPU tier için optimize edilmiştir.
+
+# ── Derin Öğrenme ──────────────────────────
+ultralytics==8.2.0          # YOLOv8 çerçevesi (PyTorch dahil)
+
+# ── Arayüz ─────────────────────────────────
+gradio==4.31.0
+
+# ── Görüntü / Video İşleme ─────────────────
+opencv-python-headless==4.9.0.80   # GPU gerektirmeyen OpenCV (Spaces için)
+Pillow==10.3.0
+
+# ── Veri ───────────────────────────────────
+pandas==2.2.2
+numpy==1.26.4
+
+# ── Model İndirme ───────────────────────────
+huggingface-hub==0.23.2
